@@ -1,0 +1,107 @@
+body{
+	background-color: black;
+}
+
+h1 {
+	/*color: #626262;*/
+	color: white;
+	font-family: "Helvetica", arial;
+	letter-spacing: 1px;
+	text-align: center;
+}
+
+h2{
+	/*color: #626262;*/
+	color: white;
+	font-family: "Helvetica";
+	/*letter-spacing: .25px;*/
+	line-height: 1.5;
+	/*text-align: center;*/
+}
+
+h3{
+	/*color: #626262;*/
+	color: white;
+	font-family: "Helvetica";
+	line-height: 1.5;
+	/*text-align: center;*/
+}
+
+img{
+	width: 460px;
+}
+
+button{
+	font-family: 'Courier New';
+	font-size: 14px;
+}
+
+input[type=button]{
+	font-family: 'Courier New';
+}
+
+#button{
+	font-family: 'Courier New';
+}
+
+#task-table {
+	width: 550px;
+	height: 550px;
+}
+
+#task-table td{
+	text-align: center;
+	border:1px solid #626262;
+}
+
+table h4{
+	font-family: "Courier New", arial;
+	/*color: #626262;*/
+	color: white;
+}
+
+input[type=button] {
+    background-color: #626262;
+    color: #FFFFFF;
+    padding: 8px 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#menu{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	font-family: "Courier New", arial;
+	font-size: 14px;
+}
+
+#menu ul li {
+	margin: 5px 0;
+}
+
+#menu-form {
+	margin: 5px 0;
+	padding:0;
+	font-family: "Courier New", arial;
+	font-size: 14px;
+}
+
+#txt p{
+	font-family: "Courier New", arial;
+	font-size: 15px;
+	color: white;
+}
+
+#scores{
+	margin: 0;
+	padding:0;
+}
+
+#scores td{
+	font-family: "Courier New", arial;
+	font-size: 13px;
+	text-align: center;
+	/*color: #626262;*/
+	color: white;
+}
