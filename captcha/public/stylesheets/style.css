@@ -1,19 +1,19 @@
 body {
-  background-color: black;
+	background-color: black;
+	font-family: "Courier", serif;
+	letter-spacing: 1px;
+	text-align: center;
+	color: white;
 }
 
 h1 {
 	margin-top: 75px;
-	font-family: "Courier", serif;
-	letter-spacing: 1px;
-	text-align: center;
-	color: white;
 }
 
 h2 {
+	padding-top: 10px;
+}
+
+h3 {
 	padding-top: 20px;
-	font-family: "Courier", serif;
-	letter-spacing: 1px;
-	text-align: center;
-	color: white;
 }
