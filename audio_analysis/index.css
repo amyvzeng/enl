@@ -1,0 +1,28 @@
+body {
+	letter-spacing: 1px;
+	text-align: center;
+	padding-top: 50px;
+	padding-right: 100px;
+	padding-left: 100px;
+}
+
+#waveform{
+	padding-left: 30px;
+	padding-right: 30px;
+	width: 100%;
+}
+
+#wave-timeline {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+#text ul li {
+	text-align: left;
+}
+
+#buttons{
+	text-align: center;
+}

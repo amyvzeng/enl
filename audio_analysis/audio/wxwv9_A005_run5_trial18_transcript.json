@@ -1,0 +1,93 @@
+[
+    {
+        "alternatives": [
+            {
+                "confidence": 0.8097750544548035,
+                "transcript": "are two people looks like they're about to fight",
+                "words": [
+                    {
+                        "endTime": "1.600s",
+                        "startTime": "1s",
+                        "word": "are"
+                    },
+                    {
+                        "endTime": "2s",
+                        "startTime": "1.600s",
+                        "word": "two"
+                    },
+                    {
+                        "endTime": "2.200s",
+                        "startTime": "2s",
+                        "word": "people"
+                    },
+                    {
+                        "endTime": "2.600s",
+                        "startTime": "2.200s",
+                        "word": "looks"
+                    },
+                    {
+                        "endTime": "2.700s",
+                        "startTime": "2.600s",
+                        "word": "like"
+                    },
+                    {
+                        "endTime": "2.800s",
+                        "startTime": "2.700s",
+                        "word": "they're"
+                    },
+                    {
+                        "endTime": "2.900s",
+                        "startTime": "2.800s",
+                        "word": "about"
+                    },
+                    {
+                        "endTime": "3.100s",
+                        "startTime": "2.900s",
+                        "word": "to"
+                    },
+                    {
+                        "endTime": "3.500s",
+                        "startTime": "3.100s",
+                        "word": "fight"
+                    }
+                ]
+            },
+            {
+                "confidence": 0.8827558755874634,
+                "transcript": "Aaron two people looks like they're about to fight"
+            },
+            {
+                "confidence": 0.8660749197006226,
+                "transcript": "hearing two people looks like they're about to fight"
+            }
+        ]
+    },
+    {
+        "alternatives": [
+            {
+                "confidence": 0.9351506233215332,
+                "transcript": " fire truck",
+                "words": [
+                    {
+                        "endTime": "5.700s",
+                        "startTime": "4.700s",
+                        "word": "fire"
+                    },
+                    {
+                        "endTime": "6.100s",
+                        "startTime": "5.700s",
+                        "word": "truck"
+                    }
+                ]
+            },
+            {
+                "confidence": 0.9479972124099731,
+                "transcript": " firetruck"
+            },
+            {
+                "confidence": 0.940935492515564,
+                "transcript": " a fire truck"
+            }
+        ]
+    }
+]
