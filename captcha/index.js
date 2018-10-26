@@ -1,8 +1,13 @@
 total_instructions = 3;
-instructions_text = ""
-images = []
+instructions_text = "";
+images = [];
+selectedImages = [];
 finalImages = new Array(3);
 total_questions = 3;
+filename = "captcha_data";
+currentTask = 0;
+workerId = "";
+secretKeyPrefix = "cAPtchA";
 
 $(document).ready(function() {
     $.ajax({
@@ -11,9 +16,9 @@ $(document).ready(function() {
         dataType: "text",
         success: function(data) {getImages(data);}
      });
+
+	$('body').on('click','img',function(){toggleOpacity(this.id)});
 });
-
-
 
 function start() {
 	console.log("hi");
@@ -22,7 +27,7 @@ function start() {
 }
 
 function getWorkerIDFromUrl() {
-	console.log("hi");
+	workerId = window.location.href.split("workerID=")[1];
 }
 
 function getInstructions(file) {
@@ -78,15 +83,22 @@ function getImages(data) {
 	}
 }
 
-function taskTransitionHandler(index) {
+function taskTransitionHandler(index, timer) {
+	finalImages[currentTask] = selectedImages;
+	console.log(finalImages[currentTask]);
+	document.getElementById("taskgrid").innerHTML = "";
+	document.getElementById("taskfooter").innerHTML = "";
+	clearInterval(timer);
+	document.getElementById("timer").innerHTML = "";
+
 	if (index == total_questions) {
+		document.getElementById("question").innerHTML = "<p>Here is your worker key</p>";
 		finish();
 	} else {
 		document.getElementById("question").innerHTML = "<p>Loading</p>";
-		document.getElementById("timer").innerHTML = "";
-		document.getElementById("taskgrid").innerHTML = "";
-		document.getElementById("taskfooter").innerHTML = "";
-		setTimeout(function() {showTaskGrid(index);}, 3000);
+		setTimeout(function() {
+			showTaskGrid(index);
+		}, 3000);
 	}
 }
 
@@ -99,15 +111,18 @@ function showTimer(index) {
 			taskTransitionHandler(index+1);
 		}
 	}, 1000);
+
+	return timer;
 }
 
 function showTaskGrid(index) {
-	questions = ["Click on three images you like", "Click on all images that look 'natural'", "Click on all images that look 'urban'"];
+	currentTask = index;
+	questions = ["Task 1: Click on three images you like", "Task 2: Click on all images that look 'natural'", "Task 3: Click on all images that look 'urban'"];
 	document.getElementById("question").innerHTML = "<p>" + questions[index] + "</p>";
-	showTimer(index);
+	timer = showTimer(index);
 	populateGrid(index);
-	document.getElementById("taskfooter").innerHTML = "<p>Task " + (index+1).toString() + "/" + total_questions.toString() + "</p>";
-	document.getElementById("taskfooter").innerHTML += "<button class='button' onclick='taskTransitionHandler(" + (index+1).toString() + ")'>Next</button>";
+	document.getElementById("taskfooter").innerHTML = "<p>Trial " + (index+1).toString() + "/" + total_questions.toString() + "</p>";
+	document.getElementById("taskfooter").innerHTML += "<button class='button' onclick='taskTransitionHandler(" + (index+1).toString() + ", timer)'>Next</button>";
 }
 
 function createGrid(imageArray, taskIndex) {
@@ -140,24 +155,36 @@ function populateGrid(taskIndex) {
 }
 
 function toggleOpacity(imageId) {
-	console.log(imageId);
-	// opacity = document.getElementById(imageId).style.opacity;
-	// if (!opacity || opacity == 1.0) {
-	// 	document.getElementById(imageId).style.opacity = .5;
-	// 	finalImages[taskIndex].push(imageId);
-	// } else {
-	// 	document.getElementById(imageId).style.opacity = 1.0;
-	// 	finalImages[taskIndex] = finalImages[taskIndex].filter(e => e != imageId);
-	// }
+	opacity = document.getElementById(imageId).style.opacity;
+	if (!opacity || opacity == 1.0) {
+		document.getElementById(imageId).style.opacity = .5;
+		selectedImages.push(imageId);
+	} else {
+		document.getElementById(imageId).style.opacity = 1.0;
+		selectedImages = selectedImages.filter(e => e != imageId);
+	}
 }
 
 function generateWorkerKey() {
-	console.log("hi");
+	var secretKey = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+	for (var i = 0; i < 7; i++) {
+		secretKey += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+	return workerId + secretKeyPrefix + secretKey;
+}
+
+function saveData(workerKey) {
+	var filedata = {"Worker Key": workerKey, "Preferred Images": finalImages[0], "Nature Images": finalImages[1], "Urban Images": finalImages[2]};
+	var xhr = new XMLHttpRequest();
+	xhr.open('POST', 'save_data.php'); // 'write_data.php' is the path to the php file described above.
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify({name: filename, data: filedata}));
 }
 
 function finish() {
-	generateWorkerKey();
-	console.log("finished");
+	var workerKey = generateWorkerKey();
+	saveData(workerKey);
 }
 
 
