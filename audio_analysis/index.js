@@ -4,17 +4,16 @@ var totalSnippets;
 
 function start() {
 	wavesurfer = WaveSurfer.create({
-		container: document.querySelector('#waveform'),
-		progressColor: '#3B8686',
-		barHeight: 10,
-		backend: 'MediaElement',
-		plugins: [
-			WaveSurfer.timeline.create({
-                container: '#wave-timeline'
-            }),
-			WaveSurfer.regions.create({})
-		]
-	});
+	container: document.querySelector('#waveform'),
+	progressColor: '#3B8686',
+	barHeight: 10,
+	backend: 'MediaElement',
+	plugins: [
+		WaveSurfer.timeline.create({
+		container: '#wave-timeline'
+		}),
+		WaveSurfer.regions.create({})
+	]});
 	loadAudio();
 	wavesurfer.setHeight(250);
 }
