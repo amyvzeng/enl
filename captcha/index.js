@@ -1,13 +1,17 @@
 total_instructions = 3;
 instructions_text = "";
+all_images = [];
 images = [];
-selectedImages = [];
-finalImages = new Array(3);
+
 total_questions = 3;
 filename = "captcha_data";
 currentTask = 0;
 workerId = "";
 secretKeyPrefix = "cAPtchA";
+
+selectedImages = [];
+finalImages = new Array(3);
+
 
 $(document).ready(function() {
     $.ajax({
@@ -75,6 +79,8 @@ function getImages(data) {
             imagedata.push(tarr);
         }
     }
+
+    all_images = imagedata;
 	
 	var counter=0;
 	while (counter * 15 < imagedata.length) {
@@ -89,6 +95,7 @@ function taskTransitionHandler(index, timer) {
 	document.getElementById("taskgrid").innerHTML = "";
 	document.getElementById("taskfooter").innerHTML = "";
 	clearInterval(timer);
+	shuffleImages();
 	document.getElementById("timer").innerHTML = "";
 
 	if (index == total_questions) {
@@ -152,6 +159,27 @@ function populateGrid(taskIndex) {
 		document.getElementById("taskgrid").innerHTML += createGrid(value, taskIndex);
 		gridCounter+=1
 	});
+}
+
+function shuffleImages() {
+	var counter=0;
+	images = [];
+
+	for (var i = all_images.length - 1; i > 0; i--) {
+		j = Math.floor(Math.random() * (i + 1));
+        x = all_images[i];
+        all_images[i] = all_images[j];
+        all_images[j] = x;
+	}
+
+	while (counter * 15 < all_images.length) {
+		images.push(all_images.slice(counter*15,counter*15+15));
+		counter++;
+	}
+
+	console.log("finished");
+	console.log(images);
+	console.log(images.length);
 }
 
 function toggleOpacity(imageId) {
