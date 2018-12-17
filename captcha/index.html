@@ -6,28 +6,44 @@
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	<script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
 	<script type="text/javascript" src="index.js"></script>
 </head>
 
 <body onload="start();">
-	<h1>CAPTCHA Task</h1>
 
-	<div id="timer">
-	</div>
+	<table id="header">
+		<tr>
+			<td id="trialgrid">
+				<div id="trash" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+			</td>
 
-	<div id="instructions">
-	</div>
+			<td>
+				<h1 id="title">CAPTCHA Task</h1>
+				<p id="task_instructions"></p>
+				<div id="trialcounter"></div>
+			</td>
 
-	<div id="question">
-	</div>
+			<td id="trialgrid">
+				<div id="timer"></div>
+			</td>
+	</table>
 
-	<div id="taskgrid">
-	</div>
+	<div id="instructions"></div>	
 
-	<div id="taskfooter">
-	</div>
-	
+	<table id="taskgrid">
+		<tr>
+			<td id="trialgrid">
+			</td>
 
+			<td id="imagegrid">
+				<table id="images">
+				</table>
+			</td>
+
+			<td id="trialgrid">
+				<div id="next"></div>
+			</td>
+		</tr>
+	</table>
 </body>
-
-</html>

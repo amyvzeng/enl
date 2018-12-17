@@ -1,51 +1,51 @@
 body {
-	background-color: black;
-	color: white;
+	background-color:black;
+	color:white;
 	font-family: "Helvetica", arial;
-	letter-spacing: 1px;
-	text-align: center;
-	padding-top: 50px;
-	padding-right: 100px;
-	padding-left: 100px;
+	letter-spacing:1px;
+	text-align:center;
 }
 
-h1 {
-	margin-bottom: 50px;
-}
-
-p {
-	font-size: 18px;
-	text-align: center;
-}
-
-#timer {
-	position: fixed;
-	text-align: left;
-}
-
-table {
+#header {
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	padding-bottom: 50px;
+}
+
+#instructions {
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#taskgrid {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#trialgrid {
+	width: 100px;
+}
+
+#images {
+	width: 900px;
 }
 
 img {
 	width: 100%;
-	opacity: 1;
+	height: 100%;
+	margin-right: 2px;
+	margin-left: 2px;
 }
 
-img:hover {
-    opacity: .5;
+#images img:hover{
+	width:200%;
+	height:200%;
+	position: relative;
 }
-
-#taskfooter {
-	padding-top:-20px;
-}
-
-.button{
-	font-family: "Helvetica", arial;
-	font-size:13px;
-	text-align: center;
-	padding: 3px 10px;
-	border:none;
+#images td {
+	width: 455px;
+	height: 150px;
+	padding-left: 2px;
+	padding-right: 2px;
 }
